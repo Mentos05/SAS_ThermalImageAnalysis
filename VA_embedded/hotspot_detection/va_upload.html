@@ -1,0 +1,63 @@
+<html lang = "en">
+  <head>
+    <title>Hotspot Detection</title>
+    <meta charset = "UTF-8" />
+	<script type="text/javascript" src="va_upload.js"></script>
+  <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="va_upload.css">
+  </head>
+<body>
+	<form>
+		<fieldset>
+			<legend>Hotspot Detection Settings</legend>
+			<p>
+				<label>Minimum Temperature: </label><br>
+				<input name="min_degree_celsius" type="text" value="20" size=3 maxlength="3" id="min_degree_celsius" />
+			</p>
+			<p>
+				<label>Minimum Size: </label><br>
+				<input name="min_size" type="text" value="50" size=3 maxlength="10" id="min_size" />
+			</p>
+			<p>
+				<label>Maximum Size: </label><br>
+				<input name="max_size" type="text" value="50000" size=3 maxlength="10" id="max_size" />
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>Upload Files</legend>
+			<p>
+				<label>Customer Name: </label><br>
+				<input name="customer_name" type="text" value="test_customer" size=10 maxlength="100" id="customer_name" />
+			</p>
+			<p>
+				<label>Upload Folder Name: </label><br>
+				<input name="folder_name" type="text" value="test_folder" size=10 maxlength="100" id="folder_name" />
+			</p>
+			<p>
+				<label>Select one or multiple files: </label><br>
+				<input id="browse" type="file" onchange="readFiles()" multiple>
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>Progress</legend>
+			<p>
+				<label>Analyzed Images: </label><br>
+				<div id="myProgress">
+					<div id="myBar"></div>
+				</div>
+				<button id="refresh">Refresh Data</button>
+        <div id="result"></div>
+        <script>
+          fetch('http://dach-viya4-k8s/SASJobExecution/?_program=%2FPublic%2Fhotspot_dataimport')
+            .then(res => {
+    return res.text();
+})
+.then(data => {
+    $('#result').html("Data refreshed.");
+});
+        </script>
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>

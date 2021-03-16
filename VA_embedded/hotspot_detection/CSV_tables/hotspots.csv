@@ -1,0 +1,2 @@
+opcode,flags,id,tagNum,hotspot_id,size,avgtemp,maxtemp,mintemp,x1,y1,w,h,centerx,centery,customer,filename,save_path,timestamp,min_degree_celsius,min_size,max_size
+I,N, 0,0,hs1,147,54.108844,118,19,399,236,14,11,405,241,esp_test_customer50,esp_test_filename.jpg,/data/notebooks/VA_embedded/hotspot_detection/images/esp_test_customer50/,100,50,50,50000
